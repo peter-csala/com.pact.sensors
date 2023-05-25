@@ -38,7 +38,7 @@ GET /api/v1/...till=2023-05-23&device-id=461dbbfb-eb31-4377-9616-2ca2595aec52
     - Devices can report extreme values
       - There is no range validation based on the measure unit
 
-## Known bugs
+## Known issues
 - Because the measure unit is not checked that's why incorrect result could be retrieved
   - For example:
     - Device 1 reports temperature in Fahrenheit
@@ -57,4 +57,5 @@ GET /api/v1/...till=2023-05-23&device-id=461dbbfb-eb31-4377-9616-2ca2595aec52
 - Metrics
   - Supporting other metrics than average
   - Request multiple metrics at once
-  - Externalize metric calculation  
+  - Externalize metric calculation
+  - Utilize cache   
