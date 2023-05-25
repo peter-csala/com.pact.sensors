@@ -1,0 +1,16 @@
+spring:
+  h2:
+    console.enabled: true
+  datasource:
+    url: jdbc:h2:file:~/demo/sensors;DB_CLOSE_ON_EXIT=FALSE
+    platform: h2
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    ddl-auto: validate
+  hibernate:
+    generate-ddl: true
+    defer-datasource-initialization: true
+  #sql:
+    #init:
+      #mode: always

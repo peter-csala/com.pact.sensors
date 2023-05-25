@@ -1,0 +1,253 @@
+{
+	"info": {
+		"_postman_id": "c00a9b6a-711d-4199-8eae-42593bd2e436",
+		"name": "Weather Service Calls",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Ingest Sensor Data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"observedAt\": \"2023-05-21T09:45:32\",\n    \"deviceId\": \"5d114dfe-70b0-47d8-84a2-955ea3d93199\",\n    \"measuredValue\": 27,\n    \"measureUnit\": \"celcius\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sensors/temperature/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sensors",
+						"temperature",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ingest Sensor Data - Malformed",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"observedAt\": \"2023.05.20 14:44:32\",\n    \"deviceId\": \"9de86795-3d3e-414e-9be8-1a2f67923c73\",\n    \"measureName\": \"temperature\",\n    \"measuredValue\": 25,\n    \"measureUnit\": \"celcius\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/device-sensors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"device-sensors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Avg for All Devices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sensors/temperature/metrics/avg?from=2023-05-21&till=2023-05-23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sensors",
+						"temperature",
+						"metrics",
+						"avg"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2023-05-21"
+						},
+						{
+							"key": "till",
+							"value": "2023-05-23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Avg for All Devices - Out of range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sensors/temperature/metrics/avg?from=2023-05-21&till=2023-05-23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sensors",
+						"temperature",
+						"metrics",
+						"avg"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2023-05-21"
+						},
+						{
+							"key": "till",
+							"value": "2023-05-23"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Avg for Specific Device",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sensors/temperature/metrics/avg?from=2023-05-21&till=2023-05-22&device-id=5d114dfe-70b0-47d8-84a2-955ea3d93199",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sensors",
+						"temperature",
+						"metrics",
+						"avg"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2023-05-21"
+						},
+						{
+							"key": "till",
+							"value": "2023-05-22"
+						},
+						{
+							"key": "device-id",
+							"value": "5d114dfe-70b0-47d8-84a2-955ea3d93199"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Avg for Specific Device - Malformed #1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sensors/temperature/metrics/avg?from=2023-05-21&till=2023-05-22&device-id=5d114dfe-70b0-47d8-84a2-955ea3d93199",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sensors",
+						"temperature",
+						"metrics",
+						"avg"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2023-05-21"
+						},
+						{
+							"key": "till",
+							"value": "2023-05-22"
+						},
+						{
+							"key": "device-id",
+							"value": "5d114dfe-70b0-47d8-84a2-955ea3d93199"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Avg for Specific Device - Malformed #2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/sensors/temperature/metrics/avg?from=2023-05-21&till=2023-05-22&device-id=5d114dfe-70b0-47d8-84a2-955ea3d93199",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"sensors",
+						"temperature",
+						"metrics",
+						"avg"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2023-05-21"
+						},
+						{
+							"key": "till",
+							"value": "2023-05-22"
+						},
+						{
+							"key": "device-id",
+							"value": "5d114dfe-70b0-47d8-84a2-955ea3d93199"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

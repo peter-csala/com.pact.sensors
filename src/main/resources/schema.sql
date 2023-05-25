@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS SENSOR_DATA;
+CREATE TABLE SENSOR_DATA (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_observed TIMESTAMP(0) NOT NULL,
+    server_received TIMESTAMP(0) DEFAULT CURRENT_TIMESTAMP(0),
+    device_id UUID NOT NULL,
+    measure_name VARCHAR(50) NOT NULL,
+    measure_integer_value INT NOT NULL,
+    measure_unit VARCHAR(50) NOT NULL
+);
